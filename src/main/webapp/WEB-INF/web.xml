@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-	
-	
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<filter>
+		<filter-name>Authority</filter-name>
+		<filter-class>com.txzhe.filter.AuthorityFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Authority</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<servlet>
 		<servlet-name>UserServlet</servlet-name>
 		<servlet-class>com.txzhe.servlet.FreemarkerServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>ArticleManageServlet</servlet-name>
-		<servlet-class>com.txzhe.servlet.articleManage.ArticleManageServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>UserServlet</servlet-name>
 		<url-pattern>/list</url-pattern>
-	</servlet-mapping>
-	<!-- 资讯管理-列表mapping -->
-	<servlet-mapping>
-		<servlet-name>ArticleManageServlet</servlet-name>
-		<url-pattern>/articleManage/article-list</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

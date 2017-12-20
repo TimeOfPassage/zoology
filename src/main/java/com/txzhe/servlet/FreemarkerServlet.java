@@ -1,11 +1,8 @@
 package com.txzhe.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.txzhe.entity.User;
+import com.txzhe.controller.base.BaseController;
+import com.txzhe.controller.business.IAbstractController;
 import com.txzhe.utils.PropertiesUtils;
 
 import freemarker.template.Configuration;
@@ -25,12 +23,11 @@ import freemarker.template.TemplateModelException;
 
 public class FreemarkerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	private static Logger logger = Logger.getLogger(FreemarkerServlet.class);
+	private static final String JUMP_PAGE_INDEX_URL = "views/index.ftl";
 	public Configuration configuration = null;
-
 	protected Template template = null;
-	
+
 	@Override
 	public void init() throws ServletException {
 		// 创建一个FreeMarker实例
@@ -48,32 +45,42 @@ public class FreemarkerServlet extends HttpServlet {
 		}
 		// 指定FreeMarker模板文件的位置
 		configuration.setServletContextForTemplateLoading(getServletContext(), "/Hui/");
-		//统一模板
-		try {
-			template = configuration.getTemplate("index.ftl");
-		} catch (IOException e) {
-			e.printStackTrace();
-			logger.error("模板index.ftl未找到", e);
-		}
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		String operation = req.getParameter("method");
+		IAbstractController abstractController = null;
+		Map<String, Object> dataModel = null;
+		if (id != null) {
+			abstractController = BaseController.sysCoreControl(id.toLowerCase());
+		}
+		String jumpToUrl = null;
+		if (abstractController != null) {
+			// 如果为空，去首页
+			dataModel = abstractController.returnMapModel(req, resp);
+			if (dataModel == null) {
+				dataModel = new HashMap<>();
+			}
+			jumpToUrl = abstractController.jumpToPageUrl(operation);
+		} else {
+			jumpToUrl = JUMP_PAGE_INDEX_URL;
+		}
+		try {
+			template = configuration.getTemplate(jumpToUrl);
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error("模板" + abstractController.jumpToPageUrl(operation) + "未找到", e);
+		}
 		// 使用模板文件的Charset作为本页面的charset
 		// 使用text/html MIME-type
 		resp.setContentType("text/html; charset=" + template.getEncoding());
-		Map<String, Object> dataModel = new HashMap<String, Object>();
-		List<User> userList = new ArrayList<User>();
-		User user = null;
-		for (int i = 0; i < 10; i++) {
-			user = new User();
-			user.setId("" + i);
-			user.setUserName("Name-" + i);
-			user.setPassword(UUID.randomUUID().toString().replaceAll("-", ""));
-			userList.add(user);
-		}
-		dataModel.put("userList", userList);
-		dataModel.put("toRouter", "views/index/home.ftl");
 		try {
 			template.process(dataModel, resp.getWriter());
 		} catch (TemplateException e) {
