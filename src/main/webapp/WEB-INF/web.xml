@@ -8,10 +8,19 @@
 		<servlet-name>UserServlet</servlet-name>
 		<servlet-class>com.txzhe.servlet.FreemarkerServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ArticleManageServlet</servlet-name>
+		<servlet-class>com.txzhe.servlet.articleManage.ArticleManageServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>UserServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	<!-- 资讯管理-列表mapping -->
+	<servlet-mapping>
+		<servlet-name>ArticleManageServlet</servlet-name>
+		<url-pattern>/articleManage/article-list</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
