@@ -7,13 +7,13 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.txzhe.controller.business.IAbstractController;
+import com.txzhe.controller.business.AbstractController;
 
 public abstract class BaseController {
 
 	private static Logger logger = Logger.getLogger(BaseController.class);
 
-	private static Map<String, IAbstractController> classNameByInterface = null;
+	private static Map<String, AbstractController> classNameByInterface = null;
 
 	static {
 		classNameByInterface = getClassNameByInterface();
@@ -22,8 +22,8 @@ public abstract class BaseController {
 	/**
 	 * @return 根据接口获取其所有实现类对象
 	 */
-	private static Map<String, IAbstractController> getClassNameByInterface() {
-		String packageName = IAbstractController.class.getPackage().getName();
+	private static Map<String, AbstractController> getClassNameByInterface() {
+		String packageName = AbstractController.class.getPackage().getName();
 		String path = packageName.replace(".", "/");
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		URL url = classLoader.getResource(path);
@@ -42,8 +42,8 @@ public abstract class BaseController {
 	 * @param classes
 	 *            类的实例
 	 */
-	private static Map<String, IAbstractController> getClasses(File dir, String packageName) {
-		Map<String, IAbstractController> classesMap = new HashMap<>();
+	private static Map<String, AbstractController> getClasses(File dir, String packageName) {
+		Map<String, AbstractController> classesMap = new HashMap<>();
 		if (!dir.exists()) {
 			logger.warn("业务包内不存在" + dir.getAbsoluteFile());
 		}
@@ -53,12 +53,12 @@ public abstract class BaseController {
 				classesMap.putAll(getClasses(f, packageName + "." + f.getName()));
 			}
 			String fileName = f.getName();
-			if (fileName.endsWith(".class") && !fileName.contains(IAbstractController.class.getSimpleName())) {
+			if (fileName.endsWith(".class") && !fileName.contains(AbstractController.class.getSimpleName())) {
 				String pkName = fileName.substring(0, fileName.length() - 6);
 				String wipeSuffixClassName = pkName.substring(0, pkName.length() - 10).toLowerCase();
 				String classPath = packageName + "." + pkName;
 				try {
-					classesMap.put(wipeSuffixClassName, (IAbstractController) Class.forName(classPath).newInstance());
+					classesMap.put(wipeSuffixClassName, (AbstractController) Class.forName(classPath).newInstance());
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 					logger.error(fileName + "未找到", e);
@@ -81,7 +81,7 @@ public abstract class BaseController {
 	/**
 	 * 核心控制分发 identity 实现类唯一id
 	 */
-	public static IAbstractController sysCoreControl(String identity) {
+	public static AbstractController sysCoreControl(String identity) {
 		// 遍历某包下所有controller实现类
 		return classNameByInterface.get(identity);
 	}

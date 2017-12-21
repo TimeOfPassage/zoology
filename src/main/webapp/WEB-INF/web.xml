@@ -15,13 +15,14 @@
 	</filter-mapping>
 
 	<servlet>
-		<servlet-name>UserServlet</servlet-name>
-		<servlet-class>com.txzhe.servlet.FreemarkerServlet</servlet-class>
+		<servlet-name>SysTracker</servlet-name>
+		<servlet-class>com.txzhe.servlet.SysTrackerServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>UserServlet</servlet-name>
-		<url-pattern>/list</url-pattern>
+		<servlet-name>SysTracker</servlet-name>
+		<url-pattern>/SysTracker</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
