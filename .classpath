@@ -68,5 +68,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/stax-api-1.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/freemarker-2.3.10.jar" sourcepath="C:/Users/ADMINI~1/AppData/Local/Temp/.org.sf.feeling.decompiler1513903433428/source/freemarker-2.3.10-sources-1513911959939.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/fastjson-1.2.44.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

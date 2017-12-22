@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.txzhe.controller.base.BaseController;
-import com.txzhe.controller.business.AbstractController;
+import com.txzhe.controller.page.AbstractController;
+import com.txzhe.utils.BaseController;
 import com.txzhe.utils.PropertiesUtils;
 
 import freemarker.template.Configuration;

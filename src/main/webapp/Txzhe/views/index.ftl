@@ -138,6 +138,7 @@
     </ul>
     <!-- /.navbar-top-links -->
    </nav>
+   <!-- left menu start -->
    <div class="navbar-default sidebar" role="navigation">
      <div class="sidebar-nav navbar-collapse">
        <ul class="nav" id="side-menu">
@@ -149,10 +150,17 @@
            </ul>
            <!-- /.nav-second-level --> 
          </li>
+         <li> <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i>资讯管理<span class="fa arrow"></span></a>
+           <ul class="nav nav-second-level">
+             <li> <a class="menuc" url="${basePath}/SysTracker?id=article&method=article_list" href="javascript:void(0)">文章管理</a> </li>
+           </ul>
+           <!-- /.nav-second-level --> 
+         </li>
        </ul>
      </div>
      <!-- /.sidebar-collapse --> 
    </div>
+    <!-- left menu end -->
    <!-- /.navbar-static-side --> 
 <!-- Page Content -->
 <div id="page-wrapper">

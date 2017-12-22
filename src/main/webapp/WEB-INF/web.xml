@@ -13,13 +13,23 @@
 		<filter-name>Authority</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	<!-- 页面跳转核心控制器  SysTrackerServlet-->
 	<servlet>
 		<servlet-name>SysTracker</servlet-name>
 		<servlet-class>com.txzhe.servlet.SysTrackerServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<!-- 接口请求核心控制器 -->
+	<servlet>
+		<servlet-name>SysApi</servlet-name>
+		<servlet-class>com.txzhe.servlet.SysAPIServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>SysApi</servlet-name>
+		<url-pattern>/SysApi</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>SysTracker</servlet-name>
 		<url-pattern>/SysTracker</url-pattern>

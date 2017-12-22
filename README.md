@@ -13,7 +13,7 @@
 			例如：请求 ${basePath}/SysTracker?id=form&method=form_list
 				   那么文件中配置应该如下：
 					form_list=views/form/form.ftl
-	4. 在business下建立相应的XXXController，必须建立在business目录下(AbstractController同级目录)。
+	4. 在business下建立相应的XXXController，必须建立在business目录下(AbstractController同级目录);其中XXX必须和id的值一致(不区分大小写，建议驼峰命名)。
 	5. 让XXXController继承AbstractController类，并实现returnMapModel方法(此处是返回值是页面需要的数据)
 
 #### 调试运行
