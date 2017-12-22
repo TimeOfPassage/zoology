@@ -27,7 +27,8 @@ require.config({
 			exports : 'bootstrap'
 		},
 		'metisMenu' : {
-			deps : ['jquery']
+			deps : ['jquery'],
+			exports : 'metisMenu'
 		},
 		'sb-admin' : {
 			deps : ['jquery']
@@ -43,7 +44,12 @@ require.config({
 });
 require(['jquery','bootstrap','metisMenu','sb-admin','datatables','bootstrapDataTables'], function ($){
 	//-左边菜单控制切换右侧内容js-
-    $('#dataTables-example').DataTable({
-    	"responsive": true
+	$('#dataTables-example').DataTable({
+    	"responsive": true,
+    	"bLengthChange" : true, //是否显示每页大小下拉框
+    	"bFilter" : false //是否启用客户端过滤
     });
+//    $('#dataTables-example').bootstrapTable({
+//        
+//    });
 });

@@ -35,12 +35,12 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h4 class="panel-title">
-            	属性面板
+            	Demo模块
         </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in">
         <div class="panel-body">
-        	<buttonbutton class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> Button </button>
+        	<buttonbutton class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> Demo Click </button>
         </div>
     </div>
     <!-- 模态框（Modal） -->
@@ -213,6 +213,6 @@
 <script type="text/javascript">
 	var baseRoot = "${baseRoot}",basePath = "${basePath}";
 </script>
-<script type="text/javascript" data-main="${baseRoot}/scripts/form/form.js" src="${baseRoot}/common/lib/requirejs/require.js"></script>
+<script type="text/javascript" data-main="${baseRoot}/scripts/demo/demo.js" src="${baseRoot}/common/lib/requirejs/require.js"></script>
 </body>
 </html>

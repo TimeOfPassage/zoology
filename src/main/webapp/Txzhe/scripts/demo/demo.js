@@ -7,7 +7,9 @@ require.config({
 		'jquery' : 'common/lib/jquery/dist/jquery.min',
 		'bootstrap' : 'common/lib/bootstrap/dist/js/bootstrap.min',
 		'metisMenu' : 'common/lib/metisMenu/dist/metisMenu.min',
-		'sb-admin' : 'common/dist/js/sb-admin-2'
+		'sb-admin' : 'common/dist/js/sb-admin-2',
+		'datatables' : 'common/lib/datatables/media/js/jquery.dataTables.min',
+		'bootstrapDataTables' : 'common/lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min'
 	},
 	//加载非规范的模块
 	//1、这样的模块在用require()加载之前，要先用require.config()方法，定义它们的一些特征
@@ -30,33 +32,21 @@ require.config({
 		},
 		'sb-admin' : {
 			deps : ['jquery']
+		},
+		'datatables' : {
+			deps : ['jquery'],
+			exports : 'datatables'
+		},		
+		'bootstrapDataTables' : {
+			deps : ['jquery','datatables']
 		}
 	}
 });
-require(['jquery','bootstrap','metisMenu','sb-admin'], function ($){
+require(['jquery','bootstrap','metisMenu','sb-admin','datatables','bootstrapDataTables'], function ($){
 	//-左边菜单控制切换右侧内容js-
-	$(".menuc").click(function(){
-		var url = $(this).attr("url");
-		console.log(url);
-		$("#iframecon").attr("src",url); 
-	});
-	setHeight();
-	//iFrameHeight();
-	//自适应iframe高度
-	function iFrameHeight() {
-	    var ifm= document.getElementById("iframecon");
-	    var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;
-	    if(ifm != null && subWeb != null) {
-	         ifm.height = subWeb.body.scrollHeight;
-	    }
-	}
-	function setHeight()
-	{
-		var ht = $(window).height();//获取浏览器窗口的整体高度；
-	    var topHeader = $(".navbar-static-top").height();//获取头部高度，定义一个变量名为topHeader
-	    $(".sidebar").height(ht);
-	    $("#iframecon").height(ht);
-	    $(".sidebar").height(ht-topHeader);//计算左边高度：窗口高度-头部高度
-	    $("#iframecon").height(ht-topHeader);//计算右边高度：窗口高度-头部高度
-	}
+	$('#dataTables-example').DataTable({
+    	"responsive": true,
+    	"bLengthChange" : true, //是否显示每页大小下拉框
+    	"bFilter" : false //是否启用客户端过滤
+    });
 });

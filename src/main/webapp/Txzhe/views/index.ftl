@@ -22,7 +22,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body style="overflow: hidden;">
 <div id="wrapper"> 
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -137,27 +137,26 @@
       <!-- /.dropdown -->
     </ul>
     <!-- /.navbar-top-links -->
-    
-    <div class="navbar-default sidebar" role="navigation">
-      <div class="sidebar-nav navbar-collapse">
-        <ul class="nav" id="side-menu">
-          <li> <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i>菜单<span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level">
-              <li> <a class="menuc" url="${basePath}/SysTracker?id=form&method=form" href="javascript:void(0)">表单</a> </li>
-              <li> <a class="menuc" url="blank.html" href="javascript:void(0)">空白页</a> </li> 
-              <li> <a href="login.html" target="_blank">登陆页</a> </li>
-            </ul>
-            <!-- /.nav-second-level --> 
-          </li>
-        </ul>
-      </div>
-      <!-- /.sidebar-collapse --> 
-    </div>
-    <!-- /.navbar-static-side --> 
-  </nav>
+   </nav>
+   <div class="navbar-default sidebar" role="navigation">
+     <div class="sidebar-nav navbar-collapse">
+       <ul class="nav" id="side-menu">
+         <li> <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i>菜单<span class="fa arrow"></span></a>
+           <ul class="nav nav-second-level">
+             <li> <a class="menuc" url="${basePath}/SysTracker?id=form&method=form_list" href="javascript:void(0)">表单</a> </li>
+             <li> <a class="menuc" url="${basePath}/SysTracker?id=demo&method=demo_list" href="javascript:void(0)">空白页</a> </li> 
+             <li> <a href="login.html" target="_blank">登陆页</a> </li>
+           </ul>
+           <!-- /.nav-second-level --> 
+         </li>
+       </ul>
+     </div>
+     <!-- /.sidebar-collapse --> 
+   </div>
+   <!-- /.navbar-static-side --> 
 <!-- Page Content -->
 <div id="page-wrapper">
-	<iframe src="${basePath}/SysTracker?id=form&method=form" marginheight="0" marginwidth="0" frameborder="0" scrolling="auto" width="100%" height="800px" id="iframecon" name="iframepage"></iframe>
+	<iframe src="${basePath}/SysTracker?id=form&method=form_list" style="opacity: 1; display: block; overflow-x: hidden; overflow-y: auto;" width="100%" height="800px" frameborder="0" noresize id="iframecon" name="iframepage"></iframe>
 </div>
 <!-- /#page-wrapper --> 
 </div>
