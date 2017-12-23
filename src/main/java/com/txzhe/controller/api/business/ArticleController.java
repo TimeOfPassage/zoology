@@ -25,8 +25,29 @@ public class ArticleController extends AbstractSysApiController {
 		DataRow dr = new DataRow();
 
 		User u = null;
+		
+		//获取页面
+		int pageIndex = 1;
+		
+		int pageNumber = 10;
+		
+		
+		String searchText = request.getParameter("searchText");
+		
+		
+		
+		//搜索框功能
+        //当查询条件中包含中文时，get请求默认会使用ISO-8859-1编码请求参数，在服务端需要对其解码
+        if (null != searchText) {
+            try {
+                searchText = new String(searchText.getBytes("ISO-8859-1"), "UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        Page page = new Page();
 
-		List<User> list = new ArrayList<>();
+		List<Object> list = new ArrayList<>();
 
 		for (int i = 0; i < 10; i++) {
 			u = new User();
@@ -37,10 +58,13 @@ public class ArticleController extends AbstractSysApiController {
 			list.add(u);
 
 		}
-		dr.put("userList", list);
-
-		dr.put("page", new Page());
+		page.setTotalRecords(30);
+		page.setList(list);
 		
+		
+		
+		dr.put("rows", page.getList());//所有记录
+		dr.put("total", page.getTotalRecords());//分页信息
 		rs.setData(dr);
 
 		return rs;

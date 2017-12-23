@@ -44,32 +44,40 @@ require.config({
 require(['jquery','metisMenu','bootstrap','sb-admin','bootstrapTable'], function ($){
 	//-左边菜单控制切换右侧内容js-
 	$('#dataTables-example').bootstrapTable({
-		url : basePath + "/",//请求url
+		url : basePath + "/SysApi",//请求url
+		toolbar: '#toolbar',    //工具按钮用哪个容器
 		method : 'get',//请求方式
-		queryParams : {"id":"1"},// 传递参数
+		queryParams : {"id":"article"},//前端调用服务时，会默认传递上边提到的参数，如果需要添加自定义参数，可以自定义一个函数返回请求参数
 		striped : true, // 是否显示行间隔色
 		cache : false, // 是否使用缓存，默认为true
 		pagination : true, // 是否显示分页
-		sortable : true, // 是否排序
-		sidePagination : "server",// 服务端分页
+		sortable : false, // 是否排序
+		sidePagination : "server",// 分页方式：client客户端分页，server服务端分页（*）
+		//search: true,      //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
 		pageNumber : 1, // 初始化加载第一页，默认第一页
 		pageSize : 10, // 每页的记录行数（*）
+		//pageList: [10, 25, 50, 100],  //可供选择的每页的行数（*）
+		queryParamsType : '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort 
+							  // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
+		//minimumCountColumns: 2,    //最少允许的列数
+		clickToSelect: true,    //是否启用点击选中行
+		//contentType: "application/x-www-form-urlencoded", //Post 时使用
 		responseHandler:function(res){
 			var total = "";
 			var rows  = "";
 			//console.log(res.data);
 			if(typeof(res.data) != "undefined")
 			{
-			   total = res.data.pageCond.count;
-			   rows  = res.data.list;
+			   total = res.data.total
+			   rows  = res.data.rows;
 			}
 			else
 			{
 				total = res;
 				rows  = res;
 			}
-			var suc = res.code;
-			if (suc != 1) {
+			var suc = res.errorNo;
+			if (suc != 0) {
 				return res;
 			}
 			return {
@@ -78,8 +86,15 @@ require(['jquery','metisMenu','bootstrap','sb-admin','bootstrapTable'], function
 			}
 		},
 		columns:[
+			{
+				 title : '-',
+				 field : 'id',
+				 align : 'center',
+				 formatter : function(value){
+					 return "<input type='checkbox' id='"+value+"'>";
+				 }
+			},
 		   {
-				 //第一列
 				 title : '标题',
 				 field : 'userName',
 				 align : 'center',
@@ -88,15 +103,11 @@ require(['jquery','metisMenu','bootstrap','sb-admin','bootstrapTable'], function
 				 }
 		   },
 		   {
-				 //第二列
-				 title : '评论时间',
-				 field : 'createTime',
+				 title : '编号',
+				 field : 'id',
 				 align : 'center',
 				 formatter : function(value){
-					 if (value) {
-							return formatDate(value);
-						}
-						return '-';
+					 return value;
 				 }
 			 }
 		]

@@ -1,17 +1,15 @@
 package com.txzhe.entity.base;
 
-import java.io.Serializable;
+import java.util.List;
 
-public class Page implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Page {
+
 	// 总记录数
 	private int totalRecords;
-	// 总页数
-	private int totalPages;
+	// List
+	private List<Object> list;
 
 	public Page() {
-		totalRecords = 100;
-		totalPages = 10;
 	}
 
 	public int getTotalRecords() {
@@ -22,12 +20,12 @@ public class Page implements Serializable {
 		this.totalRecords = totalRecords;
 	}
 
-	public int getTotalPages() {
-		return totalPages;
+	public List<Object> getList() {
+		return list;
 	}
 
-	public void setTotalPages(int totalPages) {
-		this.totalPages = totalPages;
+	public void setList(List<Object> list) {
+		this.list = list;
 	}
 
 }

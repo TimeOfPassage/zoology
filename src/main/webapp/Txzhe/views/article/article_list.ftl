@@ -28,13 +28,8 @@
 </style>
 </head>
 <body style="padding:0px 30px;">
-<ol class="breadcrumb breadcrumb-custom">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">2013</a></li>
-    <li class="active">十一月</li>
-</ol>
 <!-- 搜索面板start -->
-<div class="panel panel-default">
+<div class="panel panel-default" style="margin-top:30px;">
     <div class="panel-heading">
         <h4 class="panel-title">
             	文章模块
