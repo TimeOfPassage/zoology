@@ -13,8 +13,15 @@
 			例如：请求 ${basePath}/SysTracker?id=form&method=form_list
 				   那么文件中配置应该如下：
 					form_list=views/form/form.ftl
-	4. 在business下建立相应的XXXController，必须建立在business目录下(AbstractController同级目录);其中XXX必须和id的值一致(不区分大小写，建议驼峰命名)。
+	4. 在business下建立相应的XXXController，必须建立在business目录下(AbstractController同级目录);
+	         其中XXX必须和id的值一致(不区分大小写，建议驼峰命名)。
 	5. 让XXXController继承AbstractController类，并实现returnMapModel方法(此处是返回值是页面需要的数据)
+	6. 在controller中调用service，则需要在对应的包下建立service和其impl实现
+	7. 在service中调用dao，框架实现了基本通用的dao，所以建立Dao时要让自定义的dao接口继承IBaseDao接口，同时指定泛型；
+	         实现dao接口时，同样要继承BaseDaoImpl，并填上泛型。
+	8. 定义实体时，必须建立在com.txzhe.entity包下，**实体中字段必须和数据库表字段一致**；
+	          数据库表名命名规则：t_packageName_entityName
+	         其中packageName指com.txzhe.entity包后级及其子目录
 
 #### 调试运行
 
