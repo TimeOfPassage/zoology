@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2017-12-25 11:24:40
+Date: 2017-12-25 15:06:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -41,17 +41,19 @@ CREATE TABLE `t_system_privilege` (
   `name` varchar(255) NOT NULL COMMENT '菜单名称',
   `url` varchar(255) DEFAULT NULL,
   `parentId` int(11) DEFAULT '0' COMMENT '父菜单id,一级菜单默认为0',
+  `icon` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT '0' COMMENT '状态: 0：未启用 1：已启用',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_system_privilege
 -- ----------------------------
-INSERT INTO `t_system_privilege` VALUES ('1', '系统管理', 'www.baidu.com', '0');
-INSERT INTO `t_system_privilege` VALUES ('2', '用户管理', null, '1');
-INSERT INTO `t_system_privilege` VALUES ('3', '角色管理', null, '1');
-INSERT INTO `t_system_privilege` VALUES ('4', '权限管理', null, '1');
-INSERT INTO `t_system_privilege` VALUES ('5', '部门管理', null, '1');
+INSERT INTO `t_system_privilege` VALUES ('1', '系统管理', 'id=form&method=form_list', '0', 'fa fa-bar-chart-o fa-fw', '1');
+INSERT INTO `t_system_privilege` VALUES ('2', '用户管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
+INSERT INTO `t_system_privilege` VALUES ('3', '角色管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
+INSERT INTO `t_system_privilege` VALUES ('4', '权限管理', 'www.tmall.comid=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
+INSERT INTO `t_system_privilege` VALUES ('5', '部门管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
 
 -- ----------------------------
 -- Table structure for t_system_role
@@ -61,7 +63,7 @@ CREATE TABLE `t_system_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `roleName` varchar(255) NOT NULL DEFAULT '' COMMENT '角色名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_system_role
@@ -69,6 +71,8 @@ CREATE TABLE `t_system_role` (
 INSERT INTO `t_system_role` VALUES ('1', '一级管理组');
 INSERT INTO `t_system_role` VALUES ('2', '二级管理组');
 INSERT INTO `t_system_role` VALUES ('3', '三级管理组');
+INSERT INTO `t_system_role` VALUES ('4', '四级管理组');
+INSERT INTO `t_system_role` VALUES ('5', '五级管理组');
 
 -- ----------------------------
 -- Table structure for t_system_role_privilege
@@ -89,8 +93,8 @@ CREATE TABLE `t_system_role_privilege` (
 -- Records of t_system_role_privilege
 -- ----------------------------
 INSERT INTO `t_system_role_privilege` VALUES ('1', '1', '1');
-INSERT INTO `t_system_role_privilege` VALUES ('2', '2', '1');
-INSERT INTO `t_system_role_privilege` VALUES ('3', '3', '1');
+INSERT INTO `t_system_role_privilege` VALUES ('2', '1', '2');
+INSERT INTO `t_system_role_privilege` VALUES ('3', '1', '3');
 
 -- ----------------------------
 -- Table structure for t_system_user

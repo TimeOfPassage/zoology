@@ -208,6 +208,16 @@
             </table>
         </div>
      </div>
+     <#if oneLevel?exists>
+		<#list oneLevel as o>
+			<h1>${o.menu_name}</h1>
+		</#list>
+	</#if>
+	<#if twoLevel?exists>
+		<#list twoLevel as t>
+			<h2>${t.menu_name}</h2>
+		</#list>
+	</#if>
 </div>
 <!-- 搜索面板end -->
 <script type="text/javascript">

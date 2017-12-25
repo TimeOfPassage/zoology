@@ -26,9 +26,9 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	private String TABLE_NAME = "t_";
 	private Class<T> entityClass = null;
 
-	private Connection conn = null;
-	private PreparedStatement pst = null;
-	private ResultSet rs = null;
+	protected Connection conn = null;
+	protected PreparedStatement pst = null;
+	protected ResultSet rs = null;
 
 	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {

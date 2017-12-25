@@ -1,7 +1,5 @@
 package com.txzhe.entity.system;
 
-import java.util.List;
-
 public class Privilege {
 
 	private String id;
@@ -10,7 +8,15 @@ public class Privilege {
 	private String url;
 	private int status;
 
-	private List<Privilege> childList;
+	private String parentId;
+
+	public String getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
 
 	public String getId() {
 		return id;
@@ -52,17 +58,10 @@ public class Privilege {
 		this.status = status;
 	}
 
-	public List<Privilege> getChildList() {
-		return childList;
-	}
-
-	public void setChildList(List<Privilege> childList) {
-		this.childList = childList;
-	}
-
 	@Override
 	public String toString() {
 		return "Privilege [id=" + id + ", name=" + name + ", icon=" + icon + ", url=" + url + ", status=" + status
-				+ ", childList=" + childList + "]";
+				+ ", parentId=" + parentId + "]";
 	}
+
 }
