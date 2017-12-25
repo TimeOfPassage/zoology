@@ -29,7 +29,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <a class="navbar-brand" href="index.html">首页</a> 
-      <a class="navbar-brand" href="./sbadmin/pages/blank.html" target="_blank">模版参照</a> 
+<!--       <a class="navbar-brand" href="./sbadmin/pages/blank.html" target="_blank">模版参照</a>  -->
       </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
@@ -152,7 +152,7 @@
          </li>
          <li> <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i>资讯管理<span class="fa arrow"></span></a>
            <ul class="nav nav-second-level">
-             <li> <a class="menuc" url="${basePath}/SysTracker?id=article&method=article_list" href="javascript:void(0)">文章管理</a> </li>
+             <li> <a class="menuc" url="${basePath}/SysTracker?id=article&method=demo_list" href="javascript:void(0)">文章管理</a> </li>
            </ul>
            <!-- /.nav-second-level --> 
          </li>
@@ -164,7 +164,7 @@
    <!-- /.navbar-static-side --> 
 <!-- Page Content -->
 <div id="page-wrapper">
-	<iframe src="${basePath}/SysTracker?id=form&method=form_list" style="opacity: 1; display: block; overflow-x: hidden; overflow-y: auto;" width="100%" height="800px" frameborder="0" noresize id="iframecon" name="iframepage"></iframe>
+	<iframe src="${baseRoot}/views/global/index.html" style="opacity: 1; display: block; overflow-x: hidden; overflow-y: auto;" width="100%" height="100%" frameborder="0" noresize id="iframecon" name="iframepage"></iframe>
 </div>
 <!-- /#page-wrapper --> 
 </div>

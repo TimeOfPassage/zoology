@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2017-12-25 15:06:07
+Date: 2017-12-25 17:36:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,17 +43,18 @@ CREATE TABLE `t_system_privilege` (
   `parentId` int(11) DEFAULT '0' COMMENT '父菜单id,一级菜单默认为0',
   `icon` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT '0' COMMENT '状态: 0：未启用 1：已启用',
+  `sort` int(11) NOT NULL DEFAULT '1' COMMENT '同级菜单排序，默认为1，排第一个',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_system_privilege
 -- ----------------------------
-INSERT INTO `t_system_privilege` VALUES ('1', '系统管理', 'id=form&method=form_list', '0', 'fa fa-bar-chart-o fa-fw', '1');
-INSERT INTO `t_system_privilege` VALUES ('2', '用户管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
-INSERT INTO `t_system_privilege` VALUES ('3', '角色管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
-INSERT INTO `t_system_privilege` VALUES ('4', '权限管理', 'www.tmall.comid=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
-INSERT INTO `t_system_privilege` VALUES ('5', '部门管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1');
+INSERT INTO `t_system_privilege` VALUES ('1', '系统管理', 'id=form&method=form_list', '0', 'fa fa-bar-chart-o fa-fw', '1', '1');
+INSERT INTO `t_system_privilege` VALUES ('2', '用户管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1', '1');
+INSERT INTO `t_system_privilege` VALUES ('3', '角色管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1', '1');
+INSERT INTO `t_system_privilege` VALUES ('4', '权限管理', 'www.tmall.comid=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1', '1');
+INSERT INTO `t_system_privilege` VALUES ('5', '部门管理', 'id=form&method=form_list', '1', 'fa fa-bar-chart-o fa-fw', '1', '1');
 
 -- ----------------------------
 -- Table structure for t_system_role

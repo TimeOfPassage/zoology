@@ -9,6 +9,15 @@ public class Privilege {
 	private int status;
 
 	private String parentId;
+	private int sort;
+
+	public int getSort() {
+		return sort;
+	}
+
+	public void setSort(int sort) {
+		this.sort = sort;
+	}
 
 	public String getParentId() {
 		return parentId;

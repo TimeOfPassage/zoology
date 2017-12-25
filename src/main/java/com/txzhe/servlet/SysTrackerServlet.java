@@ -62,16 +62,15 @@ public class SysTrackerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		String operation = req.getParameter("method");
-		Map<String, Object> dataModel = new HashMap<String,Object>();
+		Map<String, Object> dataModel = new HashMap<String, Object>();
 		if (id == null || operation == null) {
+			id = "index";
+		}
+		AbstractController abstractController = BaseController.sysCoreControl(id.toLowerCase());
+		if (abstractController == null) {
 			template = configuration.getTemplate(JUMP_PAGE_INDEX_URL);
 		} else {
-			AbstractController abstractController = BaseController.sysCoreControl(id.toLowerCase());
-			if (abstractController == null) {
-				template = configuration.getTemplate(JUMP_PAGE_INDEX_URL);
-			} else {
-				dataModel = handleReq(operation, req, resp, abstractController);
-			}
+			dataModel = handleReq(operation, req, resp, abstractController);
 		}
 		try {
 			// 使用模板文件的Charset作为本页面的charset
@@ -87,6 +86,9 @@ public class SysTrackerServlet extends HttpServlet {
 
 	}
 
+	/**
+	 * 分发请求
+	 */
 	private DataRow handleReq(String operation, HttpServletRequest req, HttpServletResponse resp,
 			AbstractController abstractController) {
 		DataRow dataModel = abstractController.returnMapModel(req, resp);
@@ -94,7 +96,8 @@ public class SysTrackerServlet extends HttpServlet {
 			dataModel = new DataRow();
 		}
 		try {
-			template = configuration.getTemplate(abstractController.jumpToPageUrl(operation));
+			template = configuration
+					.getTemplate(operation == null ? JUMP_PAGE_INDEX_URL : abstractController.jumpToPageUrl(operation));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

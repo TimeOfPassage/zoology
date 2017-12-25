@@ -41,15 +41,7 @@ require(['jquery','bootstrap','metisMenu','sb-admin'], function ($){
 		$("#iframecon").attr("src",url); 
 	});
 	setHeight();
-	//iFrameHeight();
 	//自适应iframe高度
-	function iFrameHeight() {
-	    var ifm= document.getElementById("iframecon");
-	    var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;
-	    if(ifm != null && subWeb != null) {
-	         ifm.height = subWeb.body.scrollHeight;
-	    }
-	}
 	function setHeight()
 	{
 		var ht = $(window).height();//获取浏览器窗口的整体高度；

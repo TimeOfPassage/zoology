@@ -13,22 +13,23 @@ import com.txzhe.entity.system.Privilege;
 import com.txzhe.utils.LoggerUtils;
 import com.txzhe.utils.RequestUtils;
 
-public class IndexController extends AbstractController{
+public class IndexController extends AbstractController {
 
 	@Override
 	public DataRow returnMapModel(HttpServletRequest req, HttpServletResponse resp) {
 		LoggerUtils.info("index controller start");
-		
-		String userId= RequestUtils.getCookie("userId", req);
+
+		String userId = RequestUtils.getCookie("userId", req);
 		IPrivilegeDao pDao = new PrivilegeDaoImpl();
 		userId = "1";
 		List<Privilege> privilegeList = pDao.queryPrivilegeListByUserId(userId);
-		//
-		//DataRow item = new DataRow();
 		
 		for (Privilege p : privilegeList) {
-			System.out.println(p);
+			
+			
 		}
+		
+		
 		LoggerUtils.info("index controller end");
 		return null;
 	}
