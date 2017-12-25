@@ -1,10 +1,9 @@
 package com.txzhe.controller.page;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.txzhe.entity.base.DataRow;
 import com.txzhe.utils.PropertiesUtils;
 
 public abstract class AbstractController {
@@ -12,5 +11,5 @@ public abstract class AbstractController {
 		return PropertiesUtils.getPageUrlById(operation);
 	}
 
-	public abstract Map<String, Object> returnMapModel(HttpServletRequest req, HttpServletResponse resp);
+	public abstract DataRow returnMapModel(HttpServletRequest req, HttpServletResponse resp);
 }

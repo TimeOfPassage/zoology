@@ -49,7 +49,7 @@ public class BaseController<T> {
 	}
 
 	private static Map<String, AbstractSysApiController> getApiClasses(File dir, String packageName) {
-		Map<String, AbstractSysApiController> classesMap = new HashMap<>();
+		Map<String, AbstractSysApiController> classesMap = new HashMap<String, AbstractSysApiController>();
 		if (!dir.exists()) {
 			logger.warn("业务包内不存在" + dir.getAbsoluteFile());
 		}
@@ -94,7 +94,7 @@ public class BaseController<T> {
 	 *            类的实例
 	 */
 	private static Map<String, AbstractController> getClasses(File dir, String packageName) {
-		Map<String, AbstractController> classesMap = new HashMap<>();
+		Map<String, AbstractController> classesMap = new HashMap<String, AbstractController>();
 		if (!dir.exists()) {
 			logger.warn("业务包内不存在" + dir.getAbsoluteFile());
 		}

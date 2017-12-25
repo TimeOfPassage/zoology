@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.txzhe.controller.page.AbstractController;
+import com.txzhe.entity.base.DataRow;
 import com.txzhe.utils.BaseController;
 import com.txzhe.utils.PropertiesUtils;
 
@@ -61,7 +62,7 @@ public class SysTrackerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		String operation = req.getParameter("method");
-		Map<String, Object> dataModel = new HashMap<>();
+		Map<String, Object> dataModel = new HashMap<String,Object>();
 		if (id == null || operation == null) {
 			template = configuration.getTemplate(JUMP_PAGE_INDEX_URL);
 		} else {
@@ -86,11 +87,11 @@ public class SysTrackerServlet extends HttpServlet {
 
 	}
 
-	private Map<String, Object> handleReq(String operation, HttpServletRequest req, HttpServletResponse resp,
+	private DataRow handleReq(String operation, HttpServletRequest req, HttpServletResponse resp,
 			AbstractController abstractController) {
-		Map<String, Object> dataModel = abstractController.returnMapModel(req, resp);
+		DataRow dataModel = abstractController.returnMapModel(req, resp);
 		if (dataModel == null) {
-			dataModel = new HashMap<>();
+			dataModel = new DataRow();
 		}
 		try {
 			template = configuration.getTemplate(abstractController.jumpToPageUrl(operation));

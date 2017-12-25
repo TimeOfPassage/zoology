@@ -39,7 +39,7 @@ public class SysAPIServlet extends HttpServlet {
 			rs = new ResultSet();
 			rs.setErrorNo("-2");
 			rs.setErrorMessage("系统异常," + prefix + "对应处理器为空！");
-			rs.setData(new HashMap<>());
+			rs.setData(new HashMap<Object, Object>());
 			writeJSON(response, rs);
 			return;
 		}
@@ -48,14 +48,14 @@ public class SysAPIServlet extends HttpServlet {
 			rs = new ResultSet();
 			rs.setErrorNo("-1");
 			rs.setErrorMessage("系统异常");
-			rs.setData(new HashMap<>());
+			rs.setData(new HashMap<Object, Object>());
 			writeJSON(response, rs);
 			return;
 		}
 		rs = api.execute(request, response);
 		if (rs == null) {
 			rs = new ResultSet();
-			rs.setData(new HashMap<>());
+			rs.setData(new HashMap<Object, Object>());
 			logger.warn("结果集为空，请确认");
 		}
 		writeJSON(response, rs);
@@ -63,7 +63,7 @@ public class SysAPIServlet extends HttpServlet {
 
 	public static void main(String[] args) {
 		ResultSet rs = new ResultSet();
-		rs.setData(new HashMap<>());
+		rs.setData(new HashMap<Object, Object>());
 		System.out.println(JSON.toJSON(rs));
 	}
 
