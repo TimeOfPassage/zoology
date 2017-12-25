@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -444,5 +443,4 @@
 </script>
 <script type="text/javascript" data-main="${baseRoot}/scripts/form/form.js" src="${baseRoot}/common/lib/requirejs/require.js"></script>
 </body>
->>>>>>> refs/heads/develop
 </html>

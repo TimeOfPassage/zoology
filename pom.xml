@@ -5,6 +5,7 @@
 	<artifactId>zoology</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>生态</description>
+	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -44,4 +45,17 @@
 			<version>5.1.45</version>
 		</dependency>
 	</dependencies>
+	<build>  
+	    <plugins>  
+	        <plugin>  
+	            <groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-compiler-plugin</artifactId>  
+	            <version>2.0.2</version>  
+	            <configuration>  
+	                <source>1.7</source>  
+	                <target>1.7</target>  
+	            </configuration>  
+	        </plugin>  
+	    </plugins>  
+	</build>
 </project>
