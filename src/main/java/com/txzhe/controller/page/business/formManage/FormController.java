@@ -36,9 +36,9 @@ public class FormController extends AbstractController {
 		DataRow firstLevel= null;
 		DataRow secondLevel = null;
 		DataRow thirdLevel = null;
-		List<DataRow> firstLevelList = new ArrayList<>();
-		List<DataRow> secondLevelList = new ArrayList<>();
-		List<DataRow> thirdLevelList = new ArrayList<>();
+		List<DataRow> firstLevelList = new ArrayList<DataRow>();
+		List<DataRow> secondLevelList = new ArrayList<DataRow>();
+		List<DataRow> thirdLevelList = new ArrayList<DataRow>();
 		for (Privilege p : privilegeList) {
 			if (ENABLE == p.getStatus()) {// ≤Àµ•∆Ù”√
 				if ("0".equals(p.getParentId())) {

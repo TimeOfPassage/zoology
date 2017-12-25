@@ -21,11 +21,9 @@ public class AuthorityFilter implements Filter {
 
 	private FilterConfig cfg = null;
 
-	@Override
 	public void destroy() {
 	}
 
-	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
@@ -50,7 +48,6 @@ public class AuthorityFilter implements Filter {
 		return hasCookie;
 	}
 
-	@Override
 	public void init(FilterConfig cfg) throws ServletException {
 		cfg = this.cfg;
 	}

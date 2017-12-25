@@ -43,7 +43,6 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		}
 	}
 
-	@Override
 	public Integer add(T t) {
 		try {
 			conn = ConnectionUtils.getConnectiion();

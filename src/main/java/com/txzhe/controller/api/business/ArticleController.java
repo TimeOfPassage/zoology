@@ -44,7 +44,7 @@ public class ArticleController extends AbstractSysApiController {
         }
         Page page = new Page();
 
-		List<Object> list = new ArrayList<>();
+		List<Object> list = new ArrayList<Object>();
 
 		for (int i = 0; i < 10; i++) {
 			u = new User();
