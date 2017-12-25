@@ -1,20 +1,17 @@
 package com.txzhe.controller.api.business;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.txzhe.controller.api.AbstractSysApiController;
-import com.txzhe.entity.User;
 import com.txzhe.entity.base.DataRow;
 import com.txzhe.entity.base.Page;
 import com.txzhe.entity.base.ResultSet;
+import com.txzhe.entity.system.User;
 
 public class ArticleController extends AbstractSysApiController {
 

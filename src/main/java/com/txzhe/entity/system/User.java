@@ -1,18 +1,8 @@
-package com.txzhe.entity;
+package com.txzhe.entity.system;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class User {
 	private String id;
-
 	private String userName;
-
 	private String password;
 
 	public String getId() {
@@ -39,4 +29,8 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + "]";
+	}
 }

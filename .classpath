@@ -69,5 +69,7 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/freemarker-2.3.10.jar" sourcepath="C:/Users/ADMINI~1/AppData/Local/Temp/.org.sf.feeling.decompiler1513903433428/source/freemarker-2.3.10-sources-1513911959939.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/fastjson-1.2.44.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mysql-connector-java-5.1.18.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
