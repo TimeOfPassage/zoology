@@ -23,11 +23,27 @@ public class IndexController extends AbstractController {
 		IPrivilegeDao pDao = new PrivilegeDaoImpl();
 		userId = "1";
 		List<Privilege> privilegeList = pDao.queryPrivilegeListByUserId(userId);
-		
-		for (Privilege p : privilegeList) {
-			
-			
-		}
+		//树形菜单结构
+		/**
+		 * 
+		 * 根节点
+		 * |
+		 * 一级菜单
+		 * | |
+		 * | 二级菜单1
+		 * | 二级菜单2
+		 * | 	|
+		 * |	三级菜单
+		 * 一级菜单
+		 *			
+		 */
+		/**
+		 * privilegeList 
+		 * [id:1;pid=0,name:one]
+		 * [id:2;pid=1,name:2j]
+		 * [id:3;pid=1,name:2j]
+		 * [id:4;pid=1,name:2j]
+		 */
 		
 		
 		LoggerUtils.info("index controller end");

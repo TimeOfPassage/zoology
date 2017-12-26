@@ -1,6 +1,15 @@
 $(function() {
 
-    $('#side-menu').metisMenu();
+	var menuList = "${privilegeList}";
+	console.log("dddd");
+	var subArr = new Array();
+	for (var i = 0,len = array.length; i < len; i++) {
+		arr[i].parentId = 0;
+		
+	}
+	$("side-menu").append(result);
+	
+    $('#side-menu').metisMenu({toggle:false});
 
 });
 
