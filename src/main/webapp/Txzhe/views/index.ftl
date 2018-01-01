@@ -142,20 +142,6 @@
    <div class="navbar-default sidebar" role="navigation">
      <div class="sidebar-nav navbar-collapse">
        <ul class="nav" id="side-menu">
-         <li> <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i>菜单<span class="fa arrow"></span></a>
-           <ul class="nav nav-second-level">
-             <li> <a class="menuc" url="${basePath}/SysTracker?id=form&method=form_list" href="javascript:void(0)">表单</a> </li>
-             <li> <a class="menuc" url="${basePath}/SysTracker?id=demo&method=demo_list" href="javascript:void(0)">空白页</a> </li> 
-             <li> <a href="login.html" target="_blank">登陆页</a> </li>
-           </ul>
-           <!-- /.nav-second-level --> 
-         </li>
-         <li> <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i>资讯管理<span class="fa arrow"></span></a>
-           <ul class="nav nav-second-level">
-             <li> <a class="menuc" url="${basePath}/SysTracker?id=article&method=article_list" href="javascript:void(0)">文章管理</a> </li>
-           </ul>
-           <!-- /.nav-second-level --> 
-         </li>
        </ul>
      </div>
      <!-- /.sidebar-collapse --> 
@@ -170,7 +156,8 @@
 </div>
 <!-- /#wrapper --> 
 <script type="text/javascript">
-	var baseRoot = "${baseRoot}",basePath = "${basePath}"
+var baseRoot = "${baseRoot}",basePath = "${basePath}";
+var treeArr = new Array();<#list treeList as item>treeArr.push('${item}');</#list>
 </script>
 <script type="text/javascript" data-main="${baseRoot}/scripts/index.js" src="${baseRoot}/common/lib/requirejs/require.js"></script>
 </body>

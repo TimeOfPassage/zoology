@@ -1,16 +1,18 @@
 $(function() {
-
-	var menuList = "${privilegeList}";
-	console.log("dddd");
-	var subArr = new Array();
-	for (var i = 0,len = array.length; i < len; i++) {
-		arr[i].parentId = 0;
-		
+	var menu = '';
+	for (var i = 0,len=treeArr.length; i < len; i++) {
+		var obj = JSON.parse(treeArr[i]);
+		if(obj.sort == 0){
+			$('#side-menu').append('<li id="first_'+obj.id+'"> <a href="javascript:void(0)"><i class="'+obj.icon+'"></i> '+obj.name+'<span class="fa arrow"></span></a></li>');
+		}else if(obj.sort == 1){
+			var secondObj = '<ul class="nav nav-second-level"><li id=first_second_'+obj.id+'> <a class="menuc" href="javascript:void(0)"> <i class="'+obj.icon+'"></i> '+obj.name+'<span class="fa arrow"></span></a> </li></ul>';
+			$("#first_"+obj.parentId).append(secondObj);
+		}else if(obj.sort == 2){
+			var thirdObj = '<ul class="nav nav-third-level"><li> <a class="menuc" url="${basePath}/SysTracker?'+obj.url+'" href="javascript:void(0)"> <i class="'+obj.icon+'"></i> '+obj.name+'</a> </li></ul>';
+			$("#first_second_"+obj.parentId).append(thirdObj);
+		}
 	}
-	$("side-menu").append(result);
-	
     $('#side-menu').metisMenu({toggle:false});
-
 });
 
 //Loads the correct sidebar on window load,

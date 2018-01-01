@@ -1,7 +1,9 @@
 package com.txzhe.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import org.apache.log4j.Logger;
 
 import com.txzhe.controller.page.AbstractController;
 import com.txzhe.entity.base.DataRow;
+import com.txzhe.entity.system.Privilege;
 import com.txzhe.utils.BaseController;
 import com.txzhe.utils.PropertiesUtils;
 
