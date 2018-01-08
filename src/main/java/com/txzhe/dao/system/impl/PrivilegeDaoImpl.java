@@ -16,7 +16,7 @@ public class PrivilegeDaoImpl extends BaseDaoImpl<Privilege> implements IPrivile
 		List<Privilege> list = null;
 		try {
 			conn = ConnectionUtils.getConnectiion();
-			String sql = "SELECT p.id,p.name,p.parentId,p.url,p.icon,p.status FROM t_system_privilege p LEFT JOIN t_system_role_privilege rp ON rp.privilegeId = p.id LEFT JOIN t_system_role r ON r.id = rp.roleId LEFT JOIN t_system_user_role ur ON ur.roleId = r.id LEFT JOIN t_system_user u ON u.id = ur.userId WHERE u.id=?";
+			String sql = "SELECT p.id,p.name,p.parentId,p.url,p.icon,p.status FROM t_system_privilege p LEFT JOIN t_system_role_privilege rp ON rp.privilegeId = p.id LEFT JOIN t_system_role r ON r.id = rp.roleId LEFT JOIN t_system_user_role ur ON ur.roleId = r.id LEFT JOIN t_system_user u ON u.id = ur.userId WHERE p.status=1 and u.id=?";
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, userId);
 			rs = pst.executeQuery();

@@ -34,10 +34,41 @@ require.config({
 	}
 });
 require(['jquery','bootstrap','metisMenu','sb-admin'], function ($){
+	
+	var menu = '';
+	for (var i = 0,len=treeArr.length; i < len; i++) {
+		var obj = JSON.parse(treeArr[i]);
+		if(obj.sort == 0){
+			if(obj.url != ""){
+				$('#side-menu').append('<li id="first_'+obj.id+'"> <a href="javascript:void(0)" url="'+basePath+'/SysTracker?'+obj.url+'"><i class="'+obj.icon+'"></i> '+obj.name+'<span class="fa arrow"></span></a></li>');
+			}else{
+				$('#side-menu').append('<li id="first_'+obj.id+'"> <a href="javascript:void(0)"><i class="'+obj.icon+'"></i> '+obj.name+'<span class="fa arrow"></span></a></li>');
+			}
+		}else if(obj.sort == 1){
+			var secondObj = null;
+			if(obj.url != ""){
+				secondObj = '<ul class="nav nav-second-level"><li id="first_second_'+obj.id+'"> <a class="menuc" href="javascript:void(0)" url="'+basePath+'/SysTracker?'+obj.url+'"> <i class="'+obj.icon+'"></i> '+obj.name+'</a> </li></ul>';
+			}else{
+				secondObj = '<ul class="nav nav-second-level"><li id="first_second_'+obj.id+'"> <a class="menuc" href="javascript:void(0)"> <i class="'+obj.icon+'"></i> '+obj.name+'<span class="fa arrow"></span></a> </li></ul>';
+			}
+			$("#first_"+obj.parentId).append(secondObj);
+		}else if(obj.sort == 2){
+			var thirdObj = null;
+			if(obj.url != ""){
+				thirdObj = '<ul class="nav nav-third-level"><li id="first_second_third_'+obj.id+'"> <a class="menuc" url="'+basePath+'/SysTracker?'+obj.url+'" href="javascript:void(0)"> <i class="'+obj.icon+'"></i> '+obj.name+'</a> </li></ul>';
+			}else{
+				thirdObj = '<ul class="nav nav-third-level"><li id="first_second_third_'+obj.id+'"> <a class="menuc" href="javascript:void(0)"> <i class="'+obj.icon+'"></i> '+obj.name+'<span class="fa arrow"></span></a> </li></ul>';
+			}
+			$("#first_second_"+obj.parentId).append(thirdObj);
+		}
+		//alert("不支持4级菜单");
+	}
+	$('#side-menu').metisMenu();
+	
 	//-左边菜单控制切换右侧内容js-
 	$(".menuc").click(function(){
 		var url = $(this).attr("url");
-		console.log(url);
+		//console.log(url);
 		$("#iframecon").attr("src",url); 
 	});
 	setHeight();

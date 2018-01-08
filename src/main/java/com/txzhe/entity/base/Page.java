@@ -2,12 +2,12 @@ package com.txzhe.entity.base;
 
 import java.util.List;
 
-public class Page {
+public class Page<T> {
 
 	// ×Ü¼ÇÂ¼Êý
 	private int totalRecords;
 	// List
-	private List<Object> list;
+	private List<T> list;
 
 	public Page() {
 	}
@@ -20,11 +20,11 @@ public class Page {
 		this.totalRecords = totalRecords;
 	}
 
-	public List<Object> getList() {
+	public List<T> getList() {
 		return list;
 	}
 
-	public void setList(List<Object> list) {
+	public void setList(List<T> list) {
 		this.list = list;
 	}
 

@@ -218,4 +218,22 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		return null;
 	}
 
+	@Override
+	public Integer queryTotalRows() {
+		Integer rows = 0;
+		try {
+			conn = ConnectionUtils.getConnectiion();
+			String sql = "select count(1) from "+TABLE_NAME;
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				rows = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtils.close(rs, pst, conn);
+		}
+		return rows;
+	}
 }

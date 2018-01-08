@@ -11,4 +11,8 @@ public interface IBaseDao<T> {
 	Integer update(T t);
 	
 	List<T> query();
+	/**
+	 * 查询总记录数
+	 */
+	Integer queryTotalRows();
 }

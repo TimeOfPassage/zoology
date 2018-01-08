@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.txzhe.controller.page.AbstractController;
 import com.txzhe.dao.system.IPrivilegeDao;
 import com.txzhe.dao.system.impl.PrivilegeDaoImpl;
@@ -55,7 +53,7 @@ public class IndexController extends AbstractController {
 		getSubTree(privilegeList,"0",0);
 		
 		//¥Ú”°≤Àµ•
-		for (Object ss : sonTree) {
+		/*for (Object ss : sonTree) {
 			Privilege s = JSON.parseObject(ss.toString(), Privilege.class);
 			if(s.getSort() == 0){
 				System.out.println(s.toString());
@@ -64,7 +62,7 @@ public class IndexController extends AbstractController {
 			}else{
 				System.out.println("\t \t"+s.toString());
 			}
-		}
+		}*/
 		DataRow dr = new DataRow();
 		dr.put("treeList", sonTree);
 		LoggerUtils.info("index controller end");
