@@ -23,7 +23,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	public static final String HANDLE_TABLE_PREFIX = "com.txzhe.entity.";
 
 	// t_system_user ==> t_packageName_entityName com.txzhe.entity包下开始
-	private String TABLE_NAME = "t_";
+	protected String TABLE_NAME = "t_";
 	private Class<T> entityClass = null;
 
 	protected Connection conn = null;
