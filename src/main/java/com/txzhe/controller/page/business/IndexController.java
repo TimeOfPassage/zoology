@@ -24,7 +24,7 @@ public class IndexController extends AbstractController {
 		sonTree = new ArrayList<>();
 		String userId = RequestUtils.getCookie("userId", req);
 		IPrivilegeDao pDao = new PrivilegeDaoImpl();
-		userId = "1";
+		userId = "bca1acfeb2034cf3a595f06a77da7952";
 		List<Privilege> privilegeList = pDao.queryPrivilegeListByUserId(userId);
 		//树形菜单结构
 		/**

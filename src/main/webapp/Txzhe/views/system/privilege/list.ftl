@@ -27,7 +27,7 @@
 </head>
 <body style="padding:0px 30px;">
 <!-- 搜索面板start -->
-<div class="panel panel-default">
+<div class="panel panel-default" style="margin-top: 20px;">
     <div id="collapseOne" class="panel-collapse collapse in">
     	<div class="panel-heading">
 	        <h4 class="panel-title">
@@ -103,11 +103,18 @@
 	    </div><!-- /.modal -->
 	</div>
 </div>
+<div class="panel-heading">
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-info btn-insert-article"  data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> 添加</button>
+        <button type="button" class="btn btn-sm btn-info"><i class="fa fa-edit"></i> 编辑</button>
+        <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-minus"></i>  删除</button>
+    </div>
+</div>
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="dataTable_wrapper">
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-            
+
             </table>
         </div>
      </div>
