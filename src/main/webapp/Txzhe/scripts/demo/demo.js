@@ -5,11 +5,9 @@ require.config({
 	// 这里设置的路径是相对与baseUrl的，不要包含.js
 	paths: {
 		'jquery' : 'common/lib/jquery/dist/jquery.min',
-		'bootstrap' : 'common/lib/bootstrap/dist/js/bootstrap.min',
-		'metisMenu' : 'common/lib/metisMenu/dist/metisMenu.min',
-		'sb-admin' : 'common/dist/js/sb-admin-2',
-		'datatables' : 'common/lib/datatables/media/js/jquery.dataTables.min',
-		'bootstrapDataTables' : 'common/lib/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min'
+		'ztree' : 'common/lib/zTree_v3/js/jquery.ztree.core',
+		'ztreeExcheck' : 'common/lib/zTree_v3/js/jquery.ztree.excheck',
+		'ztreeExedit' : 'common/lib/zTree_v3/js/jquery.ztree.exedit'
 	},
 	//加载非规范的模块
 	//1、这样的模块在用require()加载之前，要先用require.config()方法，定义它们的一些特征
@@ -22,31 +20,74 @@ require.config({
 		'jquery' : {
 			exports : 'jquery'  
 		},
-		'bootstrap' : {
+		'ztree' : {
 			deps : ['jquery'],
-			exports : 'bootstrap'
+			exports : 'ztree'
 		},
-		'metisMenu' : {
-			deps : ['jquery'],
-			exports : 'metisMenu'
+		'ztreeExcheck' : {
+			deps : ['jquery','ztree'],
+			exports : 'ztreeExcheck'
 		},
-		'sb-admin' : {
-			deps : ['jquery']
+		'ztreeExedit' : {
+			deps : ['jquery','ztree'],
+			exports : 'ztreeExedit'
 		},
-		'datatables' : {
-			deps : ['jquery'],
-			exports : 'datatables'
-		},		
-		'bootstrapDataTables' : {
-			deps : ['jquery','datatables']
-		}
 	}
 });
-require(['jquery','bootstrap','metisMenu','sb-admin','datatables','bootstrapDataTables'], function ($){
-	//-左边菜单控制切换右侧内容js-
-	$('#dataTables-example').DataTable({
-    	"responsive": true,
-    	"bLengthChange" : true, //是否显示每页大小下拉框
-    	"bFilter" : false //是否启用客户端过滤
-    });
+require(['jquery','ztree','ztreeExcheck','ztreeExedit'], function ($){
+	var setting = {
+	    view: {
+            selectedMulti: false
+        },
+        check: {
+            enable: true,
+            chkStyle: 'checkbox',
+            radioType: "level"
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        async: {
+        	url:basePath + "/SysApi",
+        	autoParam: [""],
+        	otherParam: {"id":"privilege"},
+        	type:"get",
+        	enable:true
+        },
+        callback: {
+			onAsyncSuccess: onAsyncSuccess,
+			onAsyncError: onAsyncError
+		}
+    };
+	function onAsyncSuccess(e,treeId,treeNode,msg){
+		var msgObj = eval('('+msg+')');
+		//msgObj.data.treeList
+		var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+		totalCount = treeNode.count;
+		treeNode.icon = "";
+		zTree.updateNode(treeNode);
+		zTree.selectNode(treeNode.children[0]);
+	}
+	function onAsyncError(e,treeId,treeNode,XMLHttpRequest,textStatus,errorThrown){
+		alert(XMLHttpRequest);
+	}
+	var zNodes =[
+	             { id:1, pId:0, name:"pNode 1"},
+	             { id:11, pId:1, name:"pNode 11"},
+	             { id:111, pId:11, name:" sNode 111"},
+	             { id:12, pId:1, name:"pNode 12"},
+	             { id:121, pId:12, name:"sNode 121"},
+	             { id:13, pId:1, name:"pNode 13"},
+	             { id:2, pId:0, name:"pNode 2"},
+	         ];
+	$(document).ready(function(){
+		$.fn.zTree.init($("#treeDemo"), setting);
+	});
+	
+	
+	
+	//展开所有节点
+	//$.fn.zTree.getZTreeObj("treeDemo").expandAll(true);
 });
